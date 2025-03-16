@@ -1,6 +1,11 @@
 from tictactoe import *
 
-print("True")if board_empty(initial_state()) else print("False")
+board = [[EMPTY, EMPTY, EMPTY],
+            [EMPTY, 'X', EMPTY],
+            [EMPTY, EMPTY, EMPTY]]
+
+print("True")if board_empty(board) else print("False")
 
 print("Hello Dulan")
+
 
