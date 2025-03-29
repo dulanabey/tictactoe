@@ -3,6 +3,7 @@ Tic Tac Toe Player
 """
 
 import math
+import copy
 
 X = "X"
 O = "O"
@@ -25,22 +26,48 @@ def player(board):
     # If board is empty - X's turn
     if board_empty(board):
          return 'X'
-    else:
+    
+    # Count the number of X's and O's: 
+    counts = count_pieces(board)
+    if counts['X'] > counts['O']: 
         return 'O'
+    else: 
+        return 'X'
 
 
 def actions(board):
     """
     Returns set of all possible actions (i, j) available on the board.
     """
-    raise NotImplementedError
+    actions = set()
+
+    for i in range(3): 
+        for j in range(3): 
+            if board[i][j] == EMPTY: 
+                actions.add((i,j))
+    return actions
+
 
 
 def result(board, action):
     """
     Returns the board that results from making move (i, j) on the board.
     """
-    raise NotImplementedError
+    # Make a deep copy
+    result_board = copy.deepcopy(board)
+
+    # Check the action is valid
+    cell_contents = board[action[0]][action[1]]
+    if cell_contents != EMPTY: 
+        raise Exception("Invalid action")
+
+    # Otherwise, implement the action and return the board
+    
+    else: 
+        result_board[action[0]][action[1]] = player(board)
+    
+    return result_board
+
 
 
 def winner(board):
@@ -75,3 +102,13 @@ def board_empty(board):
         for cell in row: 
             if cell != EMPTY: return False 
     return True
+
+def count_pieces(board): 
+    counts = {"X": 0, "O": 0}
+    
+    for row in board:
+        for cell in row:
+            if cell in counts:
+                counts[cell] += 1
+                
+    return counts

@@ -2,12 +2,13 @@ from tictactoe import *
 
 board = [[EMPTY, EMPTY, EMPTY],
             [EMPTY, 'X', EMPTY],
-            [EMPTY, EMPTY, EMPTY]]
+            ['O', EMPTY, EMPTY]]
 
-print("True")if board_empty(board) else print("False")
+board2 = [['X', 'O', EMPTY],
+            [EMPTY, 'X', EMPTY],
+            ['O', EMPTY, 'X']]
 
-print("Hello Dulan")
 
-print("Git Changes")
+print(result(board, (0,0)))
 
 
